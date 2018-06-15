@@ -11,6 +11,6 @@ and your Youtube API Key under
 
 `ui.ng/src/environments/environment.ts`
 
-From the root directory run 
+Make sure you have an AEM 4 instance running and from the root directory run 
 
 `mvn clean install -P autoInstallPackage`
