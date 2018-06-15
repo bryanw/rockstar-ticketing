@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+
+  "name": "Rockstar Target Activities",
+  "description": "This extension allows a user to update data in Adobe Target.",
+  "version": "1.0",
+
+  "options_ui": {
+    "page": "index.html?page=options",
+    "chrome_style": true
+  },
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "index.html",
+    "default_title": "Rockstar Ticketing Activities"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "https://apis.google.com/",
+    "https://www.youtube.com/",
+    "https://ims-na1.adobelogin.com/",
+    "https://mc.adobe.io/"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'; media-src https://www.youtube.com",
+  "web_accessible_resources": [
+    "assets/css/*",
+    "assets/js/*",
+    "assets/fonts/*"
+  ]
+}

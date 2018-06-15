@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="sling:OrderedFolder">
+    <nav jcr:primaryType="nt:unstructured" id="root">
+        <rockstar jcr:primaryType="nt:unstructured" desktopOnly="/welcome" desktopOnlyTitle="Classic UI"
+                  href="http://localhost:4502/apps/rockstar-ticketing/admin/ext/rockstar-ticketing/content/admin.html"
+                  icon="hand2" id="cq-rockstar" jcr:title="Rockstar Ticketing" jcr:title_commentI18n="Capability Name"
+                  order="1"/>
+    </nav>
+</jcr:root>

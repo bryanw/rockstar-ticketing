@@ -1,0 +1,93 @@
+
+<fieldset id="activities-area">
+    <!-- Activities list, Add Activities field, and Experience actions -->
+    <legend><h3>Activities</h3></legend>
+    <div style="margin-bottom: 5px;">
+        <coral-select (change)="onActivitySelect($event.target.value)" [(ngModel)]="selectedActivity && selectedActivity.id" class="coral-Form-field coral3-Select" ngDefaultControl>
+            <coral-select-item *ngFor="let activity of activityList.activities" value= {{activity.id}}>{{activity.name}}</coral-select-item>
+        </coral-select>
+        <input #newActivityName is="coral-textfield">
+        <button is="coral-button" icon="add" ngbTooltip="New Activity" (click)="createActivity(newActivityName.value)"></button>
+        <div id="target-actions" style="float: right;">
+            <input id="priority-field" placeholder="Priority" is="coral-textfield" [(ngModel)]="selectedActivity.priority"/>
+            <button is="coral-button" (click)="addExperience()">Add Experience</button>
+            <button is="coral-button" (click)="saveChanges()">Save Changes</button>
+        </div>
+    </div>
+
+    <!-- Experiences list -->
+    <div id="target-experiences">
+        <coral-wait [hidden]="!waitingForActivity" size="M" centered style="position: relative;"></coral-wait>
+        <table id="experiences-table" is="coral-table" [hidden]="!activityTableLoaded" orderable>
+            <thead is="coral-table-head">
+            <tr is="coral-table-row">
+                <th is="coral-table-headercell">Experience Name</th>
+                <th is="coral-table-headercell">Audience</th>
+                <th is="coral-table-headercell">Title</th>
+                <th is="coral-table-headercell">Video</th>
+                <th is="coral-table-headercell"></th>
+            </tr>
+            </thead>
+            <tbody is="coral-table-body">
+            <tr is="coral-table-row" *ngFor="let experience of (selectedActivity ? selectedActivity.experiences : [])">
+                <td is="coral-table-cell"><input is="coral-textfield" [(ngModel)]="experience.name"></td>
+                <td is="coral-table-cell">
+                    <select [compareWith]="compareAudiences" [(ngModel)]="experience.audience">
+                        <option *ngFor="let audience of audienceList.audiences" [ngValue]="audience">{{audience.name}}</option>
+                    </select>
+                </td>
+                <td is="coral-table-cell"><input is="coral-textfield" [(ngModel)]="experience.offerDetails.header"></td>
+                <td is="coral-table-cell">
+                    <div id="{{experience.offerDetails.videoId}}" class="col item youtube-thumbnail" droppable (onDrop)="onThumbnailDrop($event, experience.experienceLocalId)">
+                        <img id="img-{{experience.offerDetails.videoId}}" src="https://i.ytimg.com/vi/{{experience.offerDetails.videoId}}/default.jpg" (dblclick)="previewVideo(content, experience.offerDetails.videoId)" class="foo">
+                    </div>
+                </td>
+                <td is="coral-table-cell">
+                    <button is="coral-button" type="button" icon="delete" (click)="removeExperience(experience.experienceLocalId)"></button>
+                    <button is="coral-button" type="button" variant="minimal" icon="dragHandle" coral-table-roworder></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</fieldset>
+
+<!-- Youtube search field and result thumbnails -->
+<fieldset id="youtube-area">
+    <legend><h3>Youtube Browser</h3></legend>
+    <div id="youtube-video-browser" class="col-12">
+        <form [formGroup]="searchForm" class="coral-Form coral-Form--vertical">
+            <div class="row">
+                <input type="text" id="search" formControlName="searchInput" placeholder="Search for a video..." autocomplete="off" autofocus is="coral-textfield" />
+            </div>
+        </form>
+        <div class="container-fluid">
+            <div id="results" class="row"></div>
+        </div>
+        <div *ngFor="let video of youtubeResults | async">
+            <div id="{{video.id.videoId}}" class="col item youtube-thumbnail " draggable="true" class="drag-item" [dragData]="video" style="float: left; margin-right: 10px; margin-bottom: 5px;" >
+                <img id="img-{{video.id.videoId}}" [src]="video.snippet.thumbnails.default.url" (dblclick)="previewVideo(content, video.id.videoId)" />
+                <coral-tooltip placement="top" target="#img-{{video.id.videoId}}">
+                    {{video.snippet.title}}
+                </coral-tooltip>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<!-- Video preview dialog -->
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Video Preview</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div id="offer-{{videoPreviewId}}" class="offer-container">
+            <iframe width="560" height="315" [src]="videoPreviewUrl" [ngStyle]="{'display': 'block', 'margin-left': 'auto', 'margin-right': 'auto'}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" is="coral-button" (click)="d('Cross click')">Close</button>
+    </div>
+</ng-template>

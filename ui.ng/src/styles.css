@@ -1,0 +1,78 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+body {
+  background: white;
+  min-width: 785px;
+}
+header { margin-top: 30px; }
+header a { color: black; text-decoration: none; }
+header a:hover { text-decoration: none; }
+form { margin-top: 20px; }
+section, #results { padding: 0 20px; }
+input, textarea { margin: 10px; }
+.item { margin-bottom: 25px; }
+.w100 { width: 100%; }
+
+.experience-item select {
+  margin-top: 30px;
+}
+
+#experiences-table {
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#results {
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.row {
+    margin: 10px;
+}
+
+.row.odd {
+  background-color: #3498DB;
+}
+.row.even {
+  background-color: #2980B9;
+  color: white;
+}
+
+.btn-primary, .btn-primary:active { background: #000080; border-color: #0000ff; }
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus { background: #782b2b; border-color: #952b2b; }
+
+.drop-area {
+  width: 150px;
+  height: 90px;
+  border: 1px solid #aaaaaa;
+  background-color: #eeeeee;
+}
+
+.drop-area h5 {
+  padding-top: 30px;
+  color: #999999;
+}
+*/
+
+input {
+    width: 100%;
+}
+
+div.row {
+    margin-bottom: 10px;
+}
+
+.youtube-thumbnail {
+  position: relative;
+  width: 100%; /* for IE 6 */
+}
+
+.youtube-thumbnail h2 {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  width: 100%;
+}

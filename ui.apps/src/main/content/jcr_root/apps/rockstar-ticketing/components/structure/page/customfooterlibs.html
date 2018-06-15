@@ -1,0 +1,70 @@
+<!--/*
+    Copyright 2017 Adobe Systems Incorporated
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/-->
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ticketing.base'}"/>
+</sly>
+
+<script>
+    let toggleLogin = function() {
+        let dropdown = document.getElementById('menu1');
+
+        if (dropdown.style.display === "none") {
+            dropdown.style.display = "block";
+        } else {
+            dropdown.style.display = "none";
+        }
+    };
+
+    let getParam = function(name){
+        if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+            return decodeURIComponent(name[1]);
+    };
+
+    adobe.target.getOffer({
+        "mbox": "rockstar-mbox-1",
+        "params": {
+            "rockstar.age": getParam('age') || 42,
+            "rockstar.gender": getParam('gender') || 'male'
+        },
+        "success": function (offer) {
+
+            /*
+            window.adobe.target.applyOffer({
+                "mbox": "rockstar-mbox-1",
+                "offer": offer
+            });
+            */
+
+
+            let newdiv = document.createElement('div');
+            newdiv.innerHTML = offer[0].content;
+            document.getElementById('rockstar-mbox-1').appendChild(newdiv);
+
+
+        },
+        "error": function (status, error) {
+            console.log('Error', status, error);
+        }
+    });
+</script>
+
+<script src="http://bootstrapdocs.com/v2.3.2/docs/assets/js/bootstrap.js"></script>
+<script src="https://platform.twitter.com/widgets.js"></script>
+<script src="http://bootstrapdocs.com/v2.3.2/docs/assets/js/bootstrap-dropdown.js"></script>
+
+<script>
+    $('.dropdown-toggle').dropdown();
+</script>

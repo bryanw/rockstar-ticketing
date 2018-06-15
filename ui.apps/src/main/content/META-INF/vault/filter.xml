@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/rockstar-ticketing"/>
+    <filter root="/apps/sling" />
+    <filter root="/apps/cq/core/content/nav/rockstar"/>
+    <filter root="/etc/designs/rockstarticketing/images/rockstar-ticketing-logo.png"/>
+</workspaceFilter>

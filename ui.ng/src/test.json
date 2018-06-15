@@ -1,0 +1,76 @@
+{
+  "name": "Rockstar : Rock Bands",
+  "state": "approved",
+  "priority": 10,
+  "autoAllocateTraffic": {
+    "enabled": false,
+    "successEvaluationCriteria": "conversion_rate"
+  },
+  "locations": {
+    "mboxes": [
+      {
+        "locationLocalId": 0,
+        "name": "rockstar-mbox-1"
+      }
+    ]
+  },
+  "experiences": [
+    {
+      "experienceLocalId": 1,
+      "name": "Men Over 40",
+      "audienceIds": [
+        2624840
+      ],
+      "offerLocations": [
+        {
+          "locationLocalId": 0,
+          "offerId": 495978
+        }
+      ]
+    },
+    {
+      "experienceLocalId": 3,
+      "name": "Females Over 40",
+      "audienceIds": [
+        2624847
+      ],
+      "offerLocations": [
+        {
+          "locationLocalId": 0,
+          "offerId": 496372
+        }
+      ]
+    },
+    {
+      "experienceLocalId": "3",
+      "name": "Females Under 40",
+      "audienceIds": [
+        2624847
+      ],
+      "offerLocations": [
+        {
+          "locationLocalId": 0,
+          "offerId": 496486
+        }
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "metricLocalId": 32767,
+      "name": "MY PRIMARY GOAL",
+      "conversion": true,
+      "engagement": "page_count",
+      "action": {
+        "type": "count_once"
+      },
+      "mboxes": [
+        {
+          "name": "rockstar-mbox-1",
+          "successEvent": "mbox_shown"
+        }
+      ]
+    }
+  ],
+  "modifiedAt": "2018-06-14T14:00:54Z"
+}

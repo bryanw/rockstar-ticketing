@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:mixinTypes="[sling:VanityPath]"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Rockstar Ticketing Activity Builder"
+          sling:resourceType="granite/ui/components/shell/page"
+          consoleId="cq-tools-operations-rockstar-ticketing"
+          contentPath="/content"
+          currentView="${state[&quot;shell.collectionpage.layoutId&quot;].string}"
+          modeGroup="granite-rockstar-ticketing-collection"
+          pageURITemplate="/apps/rockstar-ticketing/admin/ext/rockstar-ticketing/content/admin.html"
+          targetCollection=".granite-rockstar-ticketing-collection">
+    <head jcr:primaryType="nt:unstructured">
+        <clientlibs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/includeclientlibs"
+                categories="[coralui3,granite.ui.coral.foundation]"/>
+
+        <viewport
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/admin/page/viewport"/>
+
+        <base
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="rockstar-ticketing/admin/ext/rockstar-ticketing/components/head"/>
+
+        <meta
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/meta"
+                content="chrome=1"
+                name="X-UA-Compatible"/>
+    </head>
+
+    <content
+            granite:rel="granite-rockstar-ticketing-collection"
+            jcr:primaryType="nt:unstructured"
+            jcr:title="App Canvas"
+            sling:resourceType="rockstar-ticketing/admin/ext/rockstar-ticketing/components/app">
+    </content>
+
+    <title
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/text"
+            text="Rockstar Ticketing"/>
+</jcr:root>
